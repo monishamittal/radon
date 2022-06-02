@@ -1,41 +1,55 @@
 const express = require('express');
-const myHelper = require('../util/helper')
-const underscore = require('underscore')
+const underscore=require('underscore')
+// const externalModule =require('../logger/logger.js');
+// const externalModule=require('../util/helper.js');
+//const externalModule=require('../validator/formatter.js');
+const newFile  =require('../logger/logger.js');
+
 
 const router = express.Router();
 
+
+
 router.get('/test-me', function (req, res) {
-    myHelper.printDate()
-    myHelper.getCurrentMonth()
-    myHelper.getCohortData()
-    let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
-    console.log('The first element received from underscope function is '+firstElement)
-    res.send('My first ever api!')
+    //console.log('The constant in logger route has a value '+externalModule.endpoint)
+    //console.log('The current batch is '+externalModule.batch)
+    //externalModule.log()
+    //res.send('Hello, Here Problem 1 Solution.')
+    //externalModule.a()
+    // res.send('Hello, Here Problem 2 Solution.')
+    // externalModule.pd()
+    // externalModule.pm()
+    // externalModule.pb()
+    // res.send('Hello, Here Problem 3 Solution.')
+    // externalModule.t()
+    // externalModule.lc()
+    // externalModule.uc()
+
+
+
 });
 
 router.get('/hello', function (req, res) {
-   
-    res.send('Hello there!')
+    newFile.arr();
+    newFile.arrFunc1();
+    newFile.arrFunc2();
+    newFile.arrFunc3();
+
+    res.send('problem for hello api')
+
 });
 
-router.get('/candidates', function(req, res){
-    console.log('Query paramters for this request are '+JSON.stringify(req.query))
-    let gender = req.query.gender
-    let state = req.query.state
-    let district = req.query.district
-    console.log('State is '+state)
-    console.log('Gender is '+gender)
-    console.log('District is '+district)
-    let candidates = ['Akash','Suman']
-    res.send(candidates)
-})
+router.get('/test-me2', function (req, res) {
+    res.send('My third api!')
+});
 
-router.get('/candidates/:canidatesName', function(req, res){
-    console.log('The request objects is '+ JSON.stringify(req.params))
-    console.log('Candidates name is '+req.params.canidatesName)
-    res.send('Done')
-})
+router.get('/test-me3', function (req, res) {
+    res.send('My 4th api!')
+});
 
+router.get('/test-me4', function (req, res) {
+    res.send('My last api!')
+});
 
 module.exports = router;
 // adding this comment for no reason
