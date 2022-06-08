@@ -35,12 +35,23 @@ const getBook = async function (req, res) {
     // res.send({msg : authorNewData})
 }
   
+const bookByAuthorId=async function(req,res){
+let data=await BookModel.find({author_id:req.params.key}).select({name:1,_id:0})
+res.send({msg:data})
+}
 
+const authorByRating=async function (req,res) {
+    let data1=await AuthorModel.find({age:{$gt:50}}).select({author_id:1,_id:0})
+    let data2=await BookModel.find({$and:[{author_id:data1[0].author_id},{ratings:{$gt:5}}]})
+    res.send({msg:data2})
+}
 
 module.exports.createBook= createBook
 module.exports.createAuthor= createAuthor
 module.exports.bookByAuthor=bookByAuthor
 module.exports.authorOfBook=authorOfBook
 module.exports.getBook=getBook
+module.exports.bookByAuthorId= bookByAuthorId
+module.exports.authorByRating=authorByRating
 
 

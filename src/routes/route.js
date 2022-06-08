@@ -9,5 +9,7 @@ router.post("/createAuthor", BookController.createAuthor)
 router.get("/bookByAuthor", BookController.bookByAuthor)
 router.get("/authorOfBook", BookController.authorOfBook)
 router.get("/getBook", BookController.getBook)
+router.get("/bookByAuthorId/:key", BookController.bookByAuthorId)
+router.get("/authorByRating", BookController.authorByRating)
 
 module.exports = router;
